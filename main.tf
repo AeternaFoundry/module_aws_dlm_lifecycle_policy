@@ -58,8 +58,9 @@ resource "aws_dlm_lifecycle_policy" "dlm_lifecycle_policies" {
     dynamic "parameters" {
       for_each = each.value.policy_details.parameters != null ? [each.value.policy_details.parameters] : []
       content {
-        exclude_boot_volume = parameters.value.exclude_boot_volume
-        no_reboot           = parameters.value.no_reboot
+        exclude_boot_volume      = parameters.value.exclude_boot_volume
+        exclude_data_volume_tags = parameters.value.exclude_data_volume_tags
+        no_reboot                = parameters.value.no_reboot
       }
     }
     policy_language    = each.value.policy_details.policy_language

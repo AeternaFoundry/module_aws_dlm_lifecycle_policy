@@ -30,6 +30,7 @@ Required:
         - extend_deletion (optional)
         - parameters (optional, block):
             - exclude_boot_volume (optional)
+            - exclude_data_volume_tags (optional)
             - no_reboot (optional)
         - policy_language (optional)
         - policy_type (optional)
@@ -139,8 +140,9 @@ EOT
       }))
       extend_deletion = optional(bool)
       parameters = optional(object({
-        exclude_boot_volume = optional(bool)
-        no_reboot           = optional(bool)
+        exclude_boot_volume      = optional(bool)
+        exclude_data_volume_tags = optional(map(string))
+        no_reboot                = optional(bool)
       }))
       policy_language    = optional(string)
       policy_type        = optional(string)
